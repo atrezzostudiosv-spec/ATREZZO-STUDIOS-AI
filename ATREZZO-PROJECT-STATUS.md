@@ -19,3 +19,6 @@ User requested clearer typography and new copy. Isolated lab only: eyebrow Comin
 ## 2026-11-16 — Vector A / fidelity revision V3
 
 User authorized a three-piece A based on the supplied raster reference. Approximate vector silhouette and silver/violet gradients, not an official master vector. Replaced rectangular raster masks with three polygon masks; same SVG IDs, viewBox, engine, adapter, dependency versions and 21 assets. Removed float opacity multipliers, central veil, particle dimming and desktop/mobile symbol geometry overrides. Preserved low-height safeguard and static fallback. Updated QA assertion for actual vector paths and opacity. Root homepage, DNS, Cloudflare and library untouched. Public domain unavailable during preflight; browser QA and public deployment confirmation pending. Noindex maintained.
+
+## Black background — 2026-11-16
+User approved pure black #000000 for the isolated Floating Portfolio lab. Removed ambient gradients and matched background surfaces; updated theme color and CSS cache version. No motion, monogram, imagery, typography, root homepage or library changes. Public deployment and visual browser verification pending.
