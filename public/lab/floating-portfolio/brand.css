@@ -38,3 +38,6 @@ html:not([data-lab=ready]) #logo-svg-wrap svg.logo-t-path{opacity:1}
 
 /* The engine generates gray reveal rectangles. Color those rectangles with the matching vector gradient, preserving the original opacity/timing and lightning. */
 #particles1 rect{fill:url(#atz-fill1)}#particles2 rect{fill:url(#atz-fill2)}#particles3 rect{fill:url(#atz-fill3)}
+
+/* Static and no-JS users see the complete monogram, without waiting for a reveal. */
+html:not([data-lab=ready]) #atz-base1 path{fill:url(#atz-fill1)}html:not([data-lab=ready]) #atz-base2 path{fill:url(#atz-fill2)}html:not([data-lab=ready]) #atz-base3 path{fill:url(#atz-fill3)}
