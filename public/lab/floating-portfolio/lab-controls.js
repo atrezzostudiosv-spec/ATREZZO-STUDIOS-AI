@@ -1,0 +1,4 @@
+const toggle=document.getElementById("motion-toggle"); const media=matchMedia("(prefers-reduced-motion: reduce)");
+function stopMotion(){const i=window.__TRIONN_FLOATING__;if(i&&document.documentElement.dataset.lab==="ready"){i.dispose();toggle.hidden=true;document.getElementById("state").textContent="Motion paused";}}
+const observer=new MutationObserver(()=>{if(document.documentElement.dataset.lab==="ready"){toggle.hidden=false;if(media.matches)stopMotion();}else toggle.hidden=true;});observer.observe(document.documentElement,{attributes:true,attributeFilter:["data-lab"]});
+toggle.addEventListener("click",stopMotion);media.addEventListener("change",e=>{if(e.matches)stopMotion();});addEventListener("pageshow",e=>{if(e.persisted)location.reload();});
