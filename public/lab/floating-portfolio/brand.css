@@ -3,17 +3,17 @@
 body{background:var(--base);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
 #page-header-pin{background:radial-gradient(ellipse at 0% 100%,#29105270,transparent 55%),radial-gradient(ellipse at 100% 0%,#102b6460,transparent 52%),#090812;isolation:isolate}
 #float-layer{opacity:.77}
-#hero-copy{max-width:min(90vw,860px);padding:0 12px;filter:drop-shadow(0 2px 14px #090812);z-index:20}
+#hero-copy{max-width:min(90vw,760px);padding:0 12px;filter:drop-shadow(0 2px 14px #090812);z-index:20}
 #hero-copy:before{content:"";position:absolute;z-index:-1;inset:10% -10% -10%;background:radial-gradient(ellipse,#090812ec 10%,#090812a0 48%,transparent 73%);pointer-events:none}
 #logo-circle{width:clamp(190px,28vw,340px);height:clamp(190px,28vw,340px);margin-top:clamp(-60px,-4vw,-12px);margin-bottom:clamp(-82px,-5vw,-30px)}
 #logo-svg-wrap{width:100%;height:100%;transform:none;mix-blend-mode:screen}
 #logo-svg-wrap svg.logo-t-path{opacity:1}
 #logo-svg-wrap [id^=particles],#logo-svg-wrap [id^=lightning]{opacity:.14}
 #header-dot{background:#090812}
-#hero-copy h1{font-size:clamp(39px,6.9vw,104px);font-weight:400;line-height:1.04;letter-spacing:.015em;text-transform:uppercase;margin:0 0 14px;color:var(--ink)}
-#hero-copy h1 span{color:var(--accent)}
-#hero-copy p{color:#f5f5fa;font-size:clamp(16px,2vw,24px);line-height:1.45;margin:0;max-width:650px}
-#hero-copy .statement{margin-top:20px;color:#c4bfce;font-size:clamp(14px,1.4vw,19px);max-width:490px}
+#hero-copy .eyebrow{color:#d0bff2;font-size:clamp(10px,.95vw,13px);font-weight:400;line-height:1.4;letter-spacing:.26em;text-transform:uppercase;margin:0 0 18px}
+#hero-copy h1{font-size:clamp(38px,5.6vw,84px);font-weight:500;line-height:1.02;letter-spacing:-.055em;text-transform:none;margin:0;color:var(--ink)}
+#hero-copy h1 span{display:block;color:var(--accent)}
+#hero-copy .statement{margin:clamp(18px,2vw,28px) 0 0;color:#d9d4e4;font-size:clamp(15px,1.35vw,19px);font-weight:400;line-height:1.55;letter-spacing:-.012em;max-width:460px;text-wrap:balance}
 .brand-header{position:absolute;top:clamp(20px,4vw,55px);left:clamp(18px,5vw,72px);right:clamp(18px,5vw,72px);display:flex;align-items:center;justify-content:space-between;z-index:30}
 .brand-header img{display:block;width:clamp(150px,17vw,240px);height:auto}
 .brand-header button,.return-link{color:#f5f5fa;border:1px solid #b7a5de80;border-radius:5px;padding:10px 15px;background:#090812d9;font:inherit;font-size:13px;text-decoration:none}
@@ -32,6 +32,6 @@ body{background:var(--base);color:var(--ink);font-family:Arial,Helvetica,sans-se
 html[data-lab=static] #float-layer,html[data-lab=error] #float-layer{opacity:.18}
 html[data-lab=static] .scroll-note,html[data-lab=error] .scroll-note{display:none}
 html:not([data-lab=ready]) #logo-svg-wrap svg.logo-t-path{opacity:1}
-@media(max-width:768px){#logo-circle{width:230px;height:230px;margin-top:-25px;margin-bottom:-54px}#logo-svg-wrap{width:100%;height:100%}#hero-copy{max-width:94vw}#hero-copy .statement{max-width:310px}#float-layer{opacity:.52}.brand-header button{font-size:11px;padding:8px}.scroll-note{font-size:10px}}
-@media(max-height:560px){#logo-circle{width:160px;height:160px;margin-top:-8px;margin-bottom:-38px}#hero-copy h1{font-size:clamp(34px,5.5vw,68px)}#hero-copy .statement{margin-top:8px}.brand-header{top:12px}.scroll-note{bottom:2%}}
+@media(max-width:768px){#logo-circle{width:230px;height:230px;margin-top:-25px;margin-bottom:-54px}#logo-svg-wrap{width:100%;height:100%}#hero-copy{max-width:94vw}#hero-copy h1{font-size:clamp(36px,9.5vw,64px)}#hero-copy .eyebrow{margin-bottom:13px}#hero-copy .statement{max-width:310px;margin-top:18px}#float-layer{opacity:.52}.brand-header button{font-size:11px;padding:8px}.scroll-note{font-size:10px}}
+@media(max-height:560px){#logo-circle{width:160px;height:160px;margin-top:-8px;margin-bottom:-38px}#hero-copy h1{font-size:clamp(30px,5.5vw,56px)}#hero-copy .eyebrow{margin-bottom:9px}#hero-copy .statement{margin-top:12px}.brand-header{top:12px}.scroll-note{bottom:2%}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.scroll-note{display:none}}

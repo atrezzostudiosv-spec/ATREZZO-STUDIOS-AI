@@ -7,3 +7,7 @@ Source: atrezzostudiosv-spec/atrezzo-repositorio/components/originales/trionn/AT
 21 images: 14 actual illustrative WebP previews of approved library components, copied byte-for-byte, plus seven neutral SVG studies from the original package. These are internal design studies, not client work. No TRIONN client images. Logo uses existing approved brand-social.webp in three rectangular clip masks, not redrawn; wordmark and favicon existing approved files. GSAP/ScrollTrigger 3.15.0 official CDN. One engine instance, native scroll, pin, all DOM IDs, original algorithm and reduced-motion adapter preserved. Added pause control and no-JS text/brand fallback.
 
 Root index/styles unchanged. Scoped lab CSP only. No DNS or Cloudflare configuration changes. QA workflow tests HTTP at 375/768/1024/1440, pointer, reversible scroll, reduced motion, pause, no-JS, and header policy. Keep noindex. Review live URL before considering replacement of root.
+
+## 2026-11-16 — Typography revision V2
+
+User requested clearer typography and new copy. Isolated lab only: eyebrow Coming soon; main approved brand message Your business. Better online.; supporting approved concept We design experiences. Not just websites. Two-line sentence-case title and reduced text density. Closing heading See you soon. Original logo, masks, images, component engine and root homepage untouched. Prior browser QA run 43876897710 completed successfully before this revision; rerun required for V2.
