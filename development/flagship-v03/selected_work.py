@@ -1,0 +1,24 @@
+"""ATREZZO original scene 02: editorial covers for two actual studio projects.
+No client claim and no third-party imagery. Exact MIC-004 hooks, no new motor.
+"""
+from html import escape
+from base64 import b64encode
+
+LAB='https://atrezzostudios.com/lab/floating-portfolio/'
+
+def cover(n,brand,actual_media=()):
+ paths=['M'+' L'.join(f'{x} {y}' for x,y in path)+' Z' for path in brand['paths']]
+ mark=''.join(f'<path d="{p}" fill="url(#metal)" stroke="#d8c8ff" stroke-width=".7"/>' for p in paths)
+ defs='''<defs><linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f5f5fa"/><stop offset=".27" stop-color="#b7a2ff"/><stop offset=".55" stop-color="#7436f5"/><stop offset="1" stop-color="#153b9d"/></linearGradient><radialGradient id="halo"><stop stop-color="#7436f5" stop-opacity=".55"/><stop offset=".52" stop-color="#153b9d" stop-opacity=".22"/><stop offset="1" stop-color="#090812" stop-opacity="0"/></radialGradient><linearGradient id="panel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#21134a"/><stop offset="1" stop-color="#090812"/></linearGradient></defs>'''
+ base='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" width="1280" height="800" role="img">'+defs
+ # Deliberately graphic covers, not photographs or screenshots of client work.
+ if n==1:
+  return base+f'''<rect width="1280" height="800" fill="#090812"/><ellipse cx="867" cy="384" rx="490" ry="420" fill="url(#halo)"/><g stroke="#b8a5ff" stroke-opacity=".17" fill="none"><circle cx="870" cy="380" r="289"/><circle cx="870" cy="380" r="229" stroke-dasharray="3 9"/><path d="M870 68V692M559 380H1181M690 200L1050 560M690 560L1050 200"/><path d="M48 82H1232M48 715H1232"/></g><g transform="translate(511 -27) scale(1.28)">{mark}</g><g fill="#f5f5fa" font-family="Arial,Helvetica,sans-serif"><text x="50" y="55" font-size="20" font-weight="700" letter-spacing="5">ATREZZO</text><text x="1230" y="55" text-anchor="end" font-size="14" letter-spacing="3">FLAGSHIP / 01</text><text x="56" y="310" font-size="104" font-weight="600" letter-spacing="-8">Design</text><text x="56" y="415" font-size="104" font-weight="600" letter-spacing="-8">in motion.</text><text x="60" y="500" font-size="24" fill="#bfb3de">Your business. Better online.</text><text x="50" y="759" font-size="15" letter-spacing="3" fill="#bfb3de">WEB EXPERIENCE / STUDIO PROJECT</text><text x="1230" y="759" text-anchor="end" font-size="15" letter-spacing="3" fill="#bfb3de">ATZ — 01</text></g></svg>'''
+ # Graphic study of the actual published Motion Lab; not a fake screen capture.
+ cards=[]
+ for i,(x,y,w,h,angle) in enumerate([(720,174,365,228,-12),(820,300,356,225,9),(580,340,320,200,-7),(760,468,340,210,5)]):
+  k=i+1;cx=x+w/2;cy=y+h/2
+  image=(f'<image x="{x+15}" y="{y+14}" width="{w-30}" height="{h-55}" preserveAspectRatio="xMidYMid meet" href="data:image/webp;base64,{b64encode(actual_media[i%len(actual_media)]).decode()}"/>' if actual_media else f'<g transform="translate({x+w*.27} {y+h*.09}) scale(.32)">{mark}</g>')
+  cards.append(f'<g transform="rotate({angle} {cx} {cy})"><rect x="{x}" y="{y}" width="{w}" height="{h}" rx="3" fill="url(#panel)" stroke="#b7a2ff" stroke-opacity=".68"/><rect x="{x+15}" y="{y+14}" width="{w-30}" height="{h-28}" fill="none" stroke="#b7a2ff" stroke-opacity=".18"/>{image}<text x="{x+19}" y="{y+h-22}" fill="#e0d8ff" font-family="Arial" font-size="12" letter-spacing="2">STUDY / 0{k}</text></g>')
+ return base+f'''<rect width="1280" height="800" fill="#100c35"/><g fill="none" stroke="#b967ef" stroke-opacity=".22"><path d="M48 82H1232M48 715H1232"/><circle cx="900" cy="400" r="308"/><circle cx="900" cy="400" r="252" stroke-dasharray="4 10"/><path d="M900 80V715M585 400H1215"/></g>{''.join(cards)}<g fill="#f5f5fa" font-family="Arial,Helvetica,sans-serif"><text x="50" y="55" font-size="20" font-weight="700" letter-spacing="5">ATREZZO</text><text x="1230" y="55" text-anchor="end" font-size="14" letter-spacing="3">MOTION LAB / 02</text><text x="56" y="310" font-size="112" font-weight="600" letter-spacing="-9">Motion</text><text x="56" y="420" font-size="112" font-weight="600" letter-spacing="-9">Lab.</text><text x="60" y="500" font-size="24" fill="#bfb3de">Floating Portfolio</text><text x="50" y="759" font-size="15" letter-spacing="3" fill="#bfb3de">INTERACTION / STUDIO EXPERIMENT</text><text x="1230" y="759" text-anchor="end" font-size="15" letter-spacing="3" fill="#bfb3de">ATZ — 02</text></g></svg>'''
+
