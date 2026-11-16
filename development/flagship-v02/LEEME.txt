@@ -1,0 +1,36 @@
+ATREZZO STUDIOS · DESIGN IN MOTION
+HOME V02 — LABORATORIO PRIVADO
+
+V02 conserva el Hero V01 aprobado. Solo cambia Selected Work.
+Las dos portadas editoriales representan proyectos propios del estudio,
+no capturas de clientes. Motion Lab enlaza al laboratorio publicado.
+
+1. Descomprime esta carpeta en Descargas. Mantén el archivo original
+   trionn-dev-autonomous.zip en Descargas (el mismo que ya enviaste).
+2. Abre START.command. Construye la copia privada y abre el Home en el navegador.
+   Python 3.10+ es el mismo requisito de la captura autónoma original.
+   La ventana de Terminal debe permanecer abierta mientras revisas.
+
+El iniciador recupera automáticamente los componentes y recursos propios
+ATREZZO desde los commits fijados de sus repositorios públicos, verifica
+sus SHA Git y los guarda en approved-cache. Si no hay conexión, la
+experiencia principal puede arrancar con contenido accesible provisional;
+no se certifican los componentes que falten. Los archivos de TRIONN se
+leen de TU ZIP local. No se incluyen bundles, fuentes ni medios de TRIONN
+ni se publica nada. La salida generada private-preview NO se debe publicar.
+
+El motor de Hero 54377 y la escena Vision 72959 provienen de la captura
+exacta, con cambios localizados de marca, anclajes, color, copy y entrada.
+La geometría A procede de las tres piezas aprobadas del Motion Lab y es
+provisional, no el master de marca. Se mantiene el canvas, el motor de
+fragmentación, scroll, interacción y coordinación. El loader original
+no se monta hasta disponer de sus tres trazados de marca autorizados.
+Sonido de origen desactivado; fuentes de origen no incluidas.
+
+EN / ES son vistas del Home; los enlaces de menú son anclas de esta
+versión, no las 18 rutas completas. Contacto no envía formularios.
+Los estudios gráficos son propios o conceptuales, no casos de clientes.
+
+Verificación realizada: integridad, sintaxis y grafo de módulos; prueba
+HTTP de la salida. La revisión visual WebGL, Safari, touch, scroll inverso,
+accesibilidad y rendimiento sigue pendiente. No es un lanzamiento.

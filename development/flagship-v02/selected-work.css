@@ -1,0 +1,31 @@
+/* Scene 02 ONLY. Exact ATZ-MIC-004 motion stays in its original module.
+   Preserve #keyfacts-section position/margin contract with Vision. */
+#keyfacts-section.work-scene{--work-rule:#0908122b;padding:clamp(72px,9vw,142px) var(--gutter) clamp(68px,8vw,120px);font-family:Arial,Helvetica,sans-serif;overflow:visible}
+#keyfacts-section .work-header{margin-bottom:clamp(35px,5vw,74px)}
+#keyfacts-section .work-kicker{display:flex;align-items:center;justify-content:space-between;gap:16px;border-top:1px solid var(--work-rule);padding-top:16px;margin-bottom:clamp(30px,4.5vw,64px)}
+#keyfacts-section .work-edition,#keyfacts-section .work-index,#keyfacts-section .work-class{font:500 10px/1.45 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.1em;color:#5e586c}
+#keyfacts-section .work-heading{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,260px);align-items:end;gap:clamp(24px,5vw,80px)}
+#keyfacts-section .work-heading h2{font-size:clamp(52px,9.4vw,148px);line-height:.88;letter-spacing:-.075em;font-weight:500;max-width:13ch;margin:0;overflow-wrap:normal}
+#keyfacts-section .work-heading p{font-size:clamp(14px,1.2vw,17px);line-height:1.5;color:#51495e;margin:0 0 4px;max-width:28ch}
+#keyfacts-section .work-index-component{--mi-bg:transparent;--mi-fg:#090812;--mi-accent:#5b28bd;--mi-line:var(--work-rule);font-family:inherit;overflow:visible;isolation:isolate}
+#keyfacts-section .work-index-component .mi-hover-layout{gap:clamp(22px,4vw,64px);min-width:0}
+#keyfacts-section .work-index-component[data-mi-motion=on] .mi-hover-layout[data-mi-desktop]{grid-template-columns:minmax(0,.82fr) minmax(0,1.28fr);align-items:center}
+#keyfacts-section .work-index-component .mi-hover-item{padding:clamp(20px,2.2vw,34px) 0;border:0;border-top:1px solid var(--work-rule);color:#090812;min-width:0;text-decoration:none}
+#keyfacts-section .work-index-component .mi-hover-item:last-child{border-bottom:1px solid var(--work-rule)}
+#keyfacts-section .work-row{width:100%;min-width:0;display:grid;grid-template-columns:24px minmax(0,1fr) 24px;gap:clamp(10px,1.3vw,18px);align-items:start}
+#keyfacts-section .work-index{padding-top:8px}
+#keyfacts-section .work-title strong{font-family:inherit;font-size:clamp(25px,3vw,47px);line-height:1.02;letter-spacing:-.055em;font-weight:500;display:block;overflow-wrap:normal}
+#keyfacts-section .work-title small{display:block;font-family:inherit;font-size:12px;line-height:1.45;color:#51495e;margin-top:10px;letter-spacing:0}
+#keyfacts-section .work-class{display:block;margin-top:13px;font-size:9px;letter-spacing:.12em}
+#keyfacts-section .work-arrow{margin-top:7px;width:22px;height:22px;justify-self:end;color:#51495e}
+#keyfacts-section .mi-hover-item[data-mi-active] .work-arrow{color:var(--mi-accent)}
+#keyfacts-section .work-index-component .mi-art{display:block;border-radius:0;aspect-ratio:8/5;object-fit:contain;background:#090812;width:100%;height:auto;max-width:none}
+#keyfacts-section .work-index-component[data-mi-motion=on] .mi-hover-layout[data-mi-desktop] .mi-hover-item .mi-art{display:none}
+#keyfacts-section .work-index-component[data-mi-motion=on] .mi-hover-layout[data-mi-desktop] .mi-hover-preview{border-radius:0;border:0;aspect-ratio:8/5;background:#090812;min-width:0}
+#keyfacts-section .work-index-component .mi-hover-preview .mi-art{width:100%;height:100%;object-fit:contain}
+#keyfacts-section .work-index-component .mi-hover-layout:not([data-mi-desktop]) .mi-hover-item{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.28fr);gap:clamp(20px,4vw,64px);align-items:center}
+#keyfacts-section .work-index-component .mi-hover-layout:not([data-mi-desktop]) .mi-hover-item .mi-art{width:100%;max-width:none}
+#keyfacts-section .work-end{border-top:1px solid var(--work-rule);padding-top:18px;margin-top:clamp(30px,4vw,56px);display:flex;justify-content:space-between;align-items:center;gap:24px;font-size:12px;line-height:1.4;color:#51495e}
+#keyfacts-section .work-end a{display:inline-flex;align-items:center;gap:12px;color:#090812;text-decoration:none;border-bottom:1px solid #090812;padding-bottom:6px;font-weight:600}
+#keyfacts-section :focus-visible{outline:2px solid #5b28bd;outline-offset:5px}
+@media(max-width:799px){#keyfacts-section .work-heading{grid-template-columns:1fr;gap:20px}#keyfacts-section .work-heading h2{font-size:clamp(48px,10.6vw,85px);max-width:12ch}#keyfacts-section .work-heading p{max-width:36ch}#keyfacts-section .work-index-component .mi-hover-layout:not([data-mi-desktop]) .mi-hover-item{grid-template-columns:1fr;gap:19px;padding:25px 0}#keyfacts-section .work-title strong{font-size:clamp(29px,6vw,48px)}#keyfacts-section .work-end{align-items:flex-start;flex-direction:column;gap:20px}#keyfacts-section .work-edition{font-size:9px}#keyfacts-section .work-index-component .mi-hover-layout{gap:0}}
