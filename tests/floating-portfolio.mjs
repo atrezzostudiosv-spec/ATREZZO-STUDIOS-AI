@@ -28,7 +28,7 @@ try{
  const page=await browser.newPage({viewport:{width,height:width===375?812:900},hasTouch:width===375,isMobile:width===375});
  await setup(page);const errors=[];page.on("pageerror",e=>errors.push(e.message));page.on("console",m=>{if(m.type()==="error")errors.push(m.text())});
  await page.goto(url);await page.waitForFunction(()=>Boolean(document.documentElement.dataset.lab));assert.equal(await page.locator("html").getAttribute("data-lab"),"ready",await page.locator("#lab-error").textContent());
- assert.equal(await page.locator(".ft").count(),21);assert.equal(await page.locator("#t1,#t2,#t3").count(),3);assert.equal(await page.locator("svg image").count(),3);
+ assert.equal(await page.locator(".ft").count(),21);assert.equal(await page.locator("#t1,#t2,#t3").count(),3);assert.equal(await page.locator("#logo-svg-wrap svg image").count(),0);assert.equal(await page.locator("#atz-base1 path,#atz-base2 path,#atz-base3 path").count(),3);assert.equal(await page.locator("#float-layer").evaluate(e=>getComputedStyle(e).opacity),"1");
  assert(await page.evaluate(()=>[...document.querySelectorAll(".ft img")].every(i=>i.complete&&i.naturalWidth>0)));
  await page.waitForTimeout(2400);const before=await page.evaluate(measure);await page.waitForTimeout(400);const after=await page.evaluate(measure);assert(after.some((e,i)=>e.transform!==before[i].transform));assert(Math.max(...after.map(e=>e.opacity))>.5);
  if(width>768){await page.mouse.move(width*.15,150);await page.waitForTimeout(350);const t=await page.locator("#logo-circle").evaluate(e=>e.style.transform);await page.mouse.move(width*.85,650);await page.waitForTimeout(350);assert.notEqual(await page.locator("#logo-circle").evaluate(e=>e.style.transform),t)}

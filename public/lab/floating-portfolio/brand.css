@@ -2,13 +2,13 @@
 :root{color-scheme:dark;--ink:#f5f5fa;--accent:#d0bff2;--base:#090812}
 body{background:var(--base);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
 #page-header-pin{background:radial-gradient(ellipse at 0% 100%,#29105270,transparent 55%),radial-gradient(ellipse at 100% 0%,#102b6460,transparent 52%),#090812;isolation:isolate}
-#float-layer{opacity:.77}
-#hero-copy{max-width:min(90vw,760px);padding:0 12px;filter:drop-shadow(0 2px 14px #090812);z-index:20}
-#hero-copy:before{content:"";position:absolute;z-index:-1;inset:10% -10% -10%;background:radial-gradient(ellipse,#090812ec 10%,#090812a0 48%,transparent 73%);pointer-events:none}
-#logo-circle{width:clamp(190px,28vw,340px);height:clamp(190px,28vw,340px);margin-top:clamp(-60px,-4vw,-12px);margin-bottom:clamp(-82px,-5vw,-30px)}
-#logo-svg-wrap{width:100%;height:100%;transform:none;mix-blend-mode:screen}
-#logo-svg-wrap svg.logo-t-path{opacity:1}
-#logo-svg-wrap [id^=particles],#logo-svg-wrap [id^=lightning]{opacity:.14}
+
+#hero-copy{max-width:min(90vw,760px);padding:0 12px;z-index:20}
+
+
+
+
+
 #header-dot{background:#090812}
 #hero-copy .eyebrow{color:#d0bff2;font-size:clamp(10px,.95vw,13px);font-weight:400;line-height:1.4;letter-spacing:.26em;text-transform:uppercase;margin:0 0 18px}
 #hero-copy h1{font-size:clamp(38px,5.6vw,84px);font-weight:500;line-height:1.02;letter-spacing:-.055em;text-transform:none;margin:0;color:var(--ink)}
@@ -29,9 +29,12 @@ body{background:var(--base);color:var(--ink);font-family:Arial,Helvetica,sans-se
 .sr-only{position:absolute!important;width:1px;height:1px;padding:0!important;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0!important}
 .skip{position:fixed;left:12px;top:12px;z-index:2000;background:#f5f5fa;color:#090812;padding:10px;transform:translateY(-150%)}.skip:focus{transform:none}
 #lab-error:empty{display:none}#lab-error{max-width:100%;background:#090812;padding:8px;overflow-wrap:anywhere;font-size:12px}
-html[data-lab=static] #float-layer,html[data-lab=error] #float-layer{opacity:.18}
+
 html[data-lab=static] .scroll-note,html[data-lab=error] .scroll-note{display:none}
 html:not([data-lab=ready]) #logo-svg-wrap svg.logo-t-path{opacity:1}
-@media(max-width:768px){#logo-circle{width:230px;height:230px;margin-top:-25px;margin-bottom:-54px}#logo-svg-wrap{width:100%;height:100%}#hero-copy{max-width:94vw}#hero-copy h1{font-size:clamp(36px,9.5vw,64px)}#hero-copy .eyebrow{margin-bottom:13px}#hero-copy .statement{max-width:310px;margin-top:18px}#float-layer{opacity:.52}.brand-header button{font-size:11px;padding:8px}.scroll-note{font-size:10px}}
-@media(max-height:560px){#logo-circle{width:160px;height:160px;margin-top:-8px;margin-bottom:-38px}#hero-copy h1{font-size:clamp(30px,5.5vw,56px)}#hero-copy .eyebrow{margin-bottom:9px}#hero-copy .statement{margin-top:12px}.brand-header{top:12px}.scroll-note{bottom:2%}}
+@media(max-width:768px){#logo-svg-wrap{width:100%;height:100%}#hero-copy{max-width:94vw}#hero-copy h1{font-size:clamp(36px,9.5vw,64px)}#hero-copy .eyebrow{margin-bottom:13px}#hero-copy .statement{max-width:310px;margin-top:18px}.brand-header button{font-size:11px;padding:8px}.scroll-note{font-size:10px}}
+@media(max-height:560px){#logo-circle,#logo-svg-wrap{width:160px;height:160px}#hero-copy h1{font-size:clamp(30px,5.5vw,56px)}#hero-copy .eyebrow{margin-bottom:9px}#hero-copy .statement{margin-top:12px}.brand-header{top:12px}.scroll-note{bottom:2%}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.scroll-note{display:none}}
+
+/* The engine generates gray reveal rectangles. Color those rectangles with the matching vector gradient, preserving the original opacity/timing and lightning. */
+#particles1 rect{fill:url(#atz-fill1)}#particles2 rect{fill:url(#atz-fill2)}#particles3 rect{fill:url(#atz-fill3)}
