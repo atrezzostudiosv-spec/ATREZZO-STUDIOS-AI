@@ -1,0 +1,61 @@
+{
+  "baseline": "e48da05c1cb4a7e65be8ff11652fd2a05058a1bb",
+  "archive_sha256": "428ac61479a99758141b5e94323ebc839094d1e78028f0041f43a9caa09594a4",
+  "promotion": "No replacement before visual and functional comparison plus approval; no captured runtime in native distribution.",
+  "scenes": [
+    {
+      "id": "H01",
+      "status": "protected",
+      "requirements": [
+        "3D A and visual identity",
+        "lighting, geometry, fragment movement",
+        "pointer, touch, scroll and reverse",
+        "Vision handoff"
+      ]
+    },
+    {
+      "id": "H02",
+      "status": "protected",
+      "requirements": [
+        "horizontal work sequence",
+        "reveals, links, responsive reading",
+        "reverse and transition"
+      ]
+    },
+    {
+      "id": "H03",
+      "status": "validation",
+      "requirements": [
+        "A and 371 own frames",
+        "live WebGL particles and cursor",
+        "six narrative panels and icon animation",
+        "separate commercial resolution"
+      ]
+    }
+  ],
+  "widths": [
+    375,
+    768,
+    1024,
+    1440
+  ],
+  "states": [
+    "entry",
+    "rest",
+    "mid-scroll",
+    "reverse",
+    "rapid-scroll",
+    "exit",
+    "anchor",
+    "resize",
+    "keyboard",
+    "touch",
+    "reduced-motion",
+    "no-JS",
+    "WebGL fallback"
+  ],
+  "browsers": [
+    "Chromium",
+    "Safari/WebKit"
+  ]
+}

@@ -1,0 +1,38 @@
+/* Native migration candidate only; existing approved V06 files untouched. */
+#native-hero-canvas{position:absolute;inset:0;width:100%;height:100dvh;pointer-events:none;z-index:1;display:block}
+#native-hero-canvas[hidden],#native-particles[hidden]{display:none}
+.hero-section.native-hero-ready .fallback-symbol{display:none}
+.hero-section.native-hero-ready #sticky-wrap{mix-blend-mode:normal}
+.native-hold{text-align:center}
+.native-work-bridge{min-height:80svh;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:24px;padding:clamp(28px,9vw,140px);background:radial-gradient(ellipse at 85% 60%,#153b9d55,transparent 55%),#090812}
+.native-work-bridge h2{font-size:clamp(52px,8.7vw,132px);line-height:1.055;letter-spacing:-.043em;font-weight:500;max-width:12ch}
+.native-work-bridge p{color:#c6c2d7;font-size:clamp(18px,2vw,32px);max-width:22ch}
+.atz-work-fallback.native-horizontal{overflow:hidden;min-height:100svh;align-content:center}
+.atz-work-fallback.native-horizontal .atz-work-static-grid{display:flex;width:max-content;max-width:none;gap:clamp(24px,4vw,65px)}
+.atz-work-fallback.native-horizontal .atz-work-static-grid article{width:min(62vw,760px);flex:none}
+.native-bridge{position:relative;background:#090812;color:#f5f5fa}
+.native-bridge-stage{position:relative;isolation:isolate;min-height:100svh;padding:clamp(28px,5vw,80px) var(--gutter);display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:36px;overflow:hidden}
+#native-particles{position:absolute;inset:0;width:100%;height:100%;z-index:-2;pointer-events:none}
+.native-bridge-stage:before{content:"";position:absolute;inset:0;z-index:-3;background:radial-gradient(ellipse at 50% 55%,#32266b77,transparent 64%),#090812}
+.native-bridge-art{position:relative;grid-column:1/-1;grid-row:1;min-width:0;display:grid;place-items:center;pointer-events:none}
+.native-bridge-art img{width:min(88vw,1200px);height:auto;max-width:100%;display:block}
+.native-bridge-copy{position:relative;grid-column:1/-1;grid-row:2;display:grid;gap:16px}
+.native-bridge-copy h2{font-size:clamp(42px,7vw,112px);font-weight:500;letter-spacing:-.06em;line-height:.95;max-width:15ch}
+.native-bridge-copy p,.native-bridge-closing{font-size:clamp(16px,1.5vw,24px);color:#c6c2d7}
+.native-panels{display:grid;grid-column:1/-1;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.native-panel{display:grid;gap:12px;align-content:start;padding:clamp(20px,3vw,46px);border:1px solid #b967ef45;background:#110e24d9}
+.native-panel h3{font-size:clamp(24px,3vw,44px);font-weight:500;line-height:1.08;letter-spacing:-.035em}
+.native-panel p{font-size:clamp(14px,1.2vw,18px);line-height:1.5;color:#d9d4e9}
+.native-bridge-closing{grid-column:1/-1}
+.native-bridge.native-pinned .native-bridge-stage{height:100svh;min-height:0;grid-template-rows:auto 1fr auto}
+.native-bridge.native-pinned .native-bridge-art{position:absolute;inset:0;grid-row:auto;z-index:-1}
+.native-bridge.native-pinned .native-bridge-copy{grid-row:1;grid-column:1/-1;max-width:58vw}
+.native-bridge.native-pinned .native-bridge-copy h2{font-size:clamp(40px,5.2vw,84px)}
+.native-bridge.native-pinned .native-panels{position:relative;grid-row:2;grid-column:2;align-self:center;min-height:250px;display:grid;align-items:center}
+.native-bridge.native-pinned .native-panel{grid-area:1/1;opacity:0;visibility:hidden;transform:translateY(24px)}
+.native-bridge.native-pinned .native-panel.is-current{opacity:1;visibility:visible;transform:none}
+.native-bridge.native-pinned .native-bridge-closing{grid-row:3}
+@media(max-width:767px){.native-bridge-stage{grid-template-columns:1fr;gap:24px}.native-panels{grid-template-columns:1fr}.native-bridge-art img{width:100%}.native-work-bridge{min-height:55svh}.native-work-bridge h2{font-size:clamp(45px,10vw,76px)}}
+@media(max-height:650px){.native-bridge.native-pinned .native-bridge-copy h2{font-size:clamp(32px,4vw,58px)}.native-bridge.native-pinned .native-panel{padding:20px}.native-bridge.native-pinned .native-panels{min-height:180px}}
+@media(prefers-reduced-motion:reduce){#native-hero-canvas,#native-particles{display:none!important}.hero-section.native-hero-ready .fallback-symbol{display:block}.native-hold{display:none}}
+.preview-label{max-width:min(88vw,440px);font-size:10px}
