@@ -1,8 +1,9 @@
 // Independent browser adapter for ATREZZO-owned monogram frames.
 import {createFramePlayer} from "./frame-player.mjs";
-export function mountMonogramFrames(image,{baseURL,onFrame=()=>{},onError=()=>{}}={}){
- if(!image||!baseURL)throw TypeError("image and baseURL required");
- const urls=Array.from({length:371},(_,i)=>new URL("frame_"+String(i+1).padStart(4,"0")+".svg",baseURL).href);
+export function mountMonogramFrames(image,{baseURL,frameURLs,onFrame=()=>{},onError=()=>{}}={}){
+ if(!image||(!baseURL&&!frameURLs))throw TypeError("image and frame source required");
+ if(frameURLs&&(!Array.isArray(frameURLs)||frameURLs.length!==371))throw TypeError("371 frame URLs required");
+ const urls=frameURLs??Array.from({length:371},(_,i)=>new URL("frame_"+String(i+1).padStart(4,"0")+".svg",baseURL).href);
  const fallback=urls[0];let reduced=false,dead=false,player=null,progress=0;
  const load=(url,{signal})=>new Promise((resolve,reject)=>{
   const asset=new Image();let done=false;
