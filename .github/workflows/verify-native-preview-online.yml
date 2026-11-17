@@ -1,0 +1,32 @@
+name: Verify deployed V06 native preview
+on:
+  pull_request:
+    branches: [main]
+    paths: ['.github/workflows/verify-native-preview-online.yml']
+permissions:
+  contents: read
+jobs:
+  public-url:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - name: Verify actual GitHub Pages responses
+        run: |
+          set -euo pipefail
+          base="https://atrezzostudiosv-spec.github.io/ATREZZO-STUDIOS-AI/public/preview/v06-native"
+          for attempt in $(seq 1 18); do
+            if curl -fsSL --max-time 15 "$base/en/" -o /tmp/native-en.html && grep -q 'V06 Native Migration Preview' /tmp/native-en.html; then break; fi
+            echo "Waiting for Pages publication ($attempt/18)"
+            sleep 10
+          done
+          for lang in en es; do
+            curl -fsSL --max-time 30 -w "$lang HTTP %{http_code} %{url_effective} %{size_download} bytes\n" "$base/$lang/" -o "/tmp/native-$lang.html"
+            grep -q 'V06 Native Migration Preview' "/tmp/native-$lang.html"
+            grep -q 'noindex,nofollow' "/tmp/native-$lang.html"
+          done
+          for path in native-preview.js native-preview.css assets/service-frames/frame_0001.svg assets/service-frames/frame_0371.svg assets/wordmark.svg; do
+            curl -fsSL --max-time 30 -w "$path HTTP %{http_code} %{size_download} bytes\n" "$base/$path" -o /dev/null
+          done
+          curl -fsSL --max-time 30 "https://atrezzostudiosv-spec.github.io/ATREZZO-STUDIOS-AI/public/" -o /tmp/coming-soon.html
+          grep -qi 'coming soon' /tmp/coming-soon.html
+          echo "PUBLIC PREVIEW VERIFIED; Coming Soon remains available"
