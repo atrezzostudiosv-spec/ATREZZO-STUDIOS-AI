@@ -5,6 +5,11 @@ on:
     paths:
       - 'development/native-engine/**'
       - '.github/workflows/native-engine-browser-gate.yml'
+  pull_request:
+    branches: [flagship-development]
+    paths:
+      - 'development/native-engine/**'
+      - '.github/workflows/native-engine-browser-gate.yml'
   workflow_dispatch:
 permissions:
   contents: read
