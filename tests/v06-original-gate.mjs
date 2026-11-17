@@ -6,7 +6,7 @@ import {resolve,extname,sep} from "node:path";
 const root=resolve(process.argv[2]),prefix=process.argv[3].replace(/\/$/,"")+"/";
 const mime={".html":"text/html; charset=utf-8",".js":"text/javascript; charset=utf-8",".css":"text/css; charset=utf-8",".svg":"image/svg+xml",".webp":"image/webp",".txt":"text/plain"};
 const server=createServer(async(req,res)=>{try{const path=new URL(req.url,"http://localhost").pathname;if(!path.startsWith(prefix)){res.writeHead(404).end();return}let p=resolve(root,decodeURIComponent(path.slice(prefix.length)));if(p!==root&&!p.startsWith(root+sep)){res.writeHead(403).end();return}if((await stat(p)).isDirectory())p=resolve(p,"index.html");res.writeHead(200,{"content-type":mime[extname(p)]||"application/octet-stream","cache-control":"no-cache"});res.end(await readFile(p))}catch{res.writeHead(404).end()}});
-await new Promise(r=>server.listen(0,"127.0.0.1",r));const base="http://127.0.0.1:"+server.address().port+prefix;
+await new Promise(r=>server.listen(0,"127.0.0.1",r));const base=process.env.ATREZZO_ONLINE_BASE||"http://127.0.0.1:"+server.address().port+prefix;
 const results=[];
 try{
 for(const [name,engine] of [["chromium",chromium],["webkit",webkit]]){

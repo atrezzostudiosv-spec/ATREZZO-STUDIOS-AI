@@ -36,4 +36,27 @@ jobs:
           find public/preview/v06-original -name '*.js' -print0 | xargs -0 -n1 node --check
       - run: npm install --no-save playwright@1.56.1
       - run: npx playwright install --with-deps chromium webkit
-      - run: node tests/v06-original-gate.mjs public/preview/v06-original /ATREZZO-STUDIOS-AI/public/preview/v06-original
+      - if: github.ref != 'refs/heads/main'
+        run: node tests/v06-original-gate.mjs public/preview/v06-original /ATREZZO-STUDIOS-AI/public/preview/v06-original
+      - name: Verify exact deployed pages and preserved Coming Soon
+        if: github.ref == 'refs/heads/main'
+        env:
+          ATREZZO_ONLINE_BASE: https://atrezzostudiosv-spec.github.io/ATREZZO-STUDIOS-AI/public/preview/v06-original/
+        run: |
+          set -e
+          root=public/preview/v06-original
+          matched=0
+          for attempt in $(seq 1 30); do
+            if curl -fsSL --max-time 20 "${ATREZZO_ONLINE_BASE}en/" -o /tmp/v06-en.html && cmp -s "$root/en/index.html" /tmp/v06-en.html &&
+               curl -fsSL --max-time 20 "${ATREZZO_ONLINE_BASE}es/" -o /tmp/v06-es.html && cmp -s "$root/es/index.html" /tmp/v06-es.html; then matched=1; break; fi
+            sleep 10
+          done
+          test "$matched" = 1
+          curl -fsSL --max-time 20 https://atrezzostudiosv-spec.github.io/ATREZZO-STUDIOS-AI/public/ -o /tmp/coming-soon.html
+          cmp public/index.html /tmp/coming-soon.html
+          echo "HTTP 200 and exact deployed EN/ES HTML and Coming Soon verified"
+      - name: Reuse original gate on live Pages
+        if: github.ref == 'refs/heads/main'
+        env:
+          ATREZZO_ONLINE_BASE: https://atrezzostudiosv-spec.github.io/ATREZZO-STUDIOS-AI/public/preview/v06-original/
+        run: node tests/v06-original-gate.mjs public/preview/v06-original /ATREZZO-STUDIOS-AI/public/preview/v06-original
