@@ -1,0 +1,10 @@
+ATREZZO STUDIOS · DESIGN IN MOTION
+HOME V06 — H03 / NARRATIVE BRIDGE · LABORATORIO PRIVADO
+
+Descomprime en Descargas y abre START.command. Conserva trionn-dev-autonomous.zip en Descargas. No necesitas descargar otra captura. Cierra la Terminal de V05 si sigue abierta. No cierres la Terminal de V06 mientras revisas.
+
+H01 y H02 protegidos: no se modifica su código, composición, movimiento ni textos. H03: conserva la A, los 371 fotogramas y la dispersión tipográfica, parejas cruzadas, iconos y duración de V05. La A mantiene sus posiciones y geometría provisionales, con acabado vectorial más limpio y fondo transparente. Detrás monta dos nubes de puntos WebGL del módulo 84066 de Name Story (4.000 + 8.000 puntos), con shaders, distribución, rotación continua, recorrido de cámara e interpolación de cursor originales, adaptados a la paleta y progreso local. Sin planetas, nubes, video ni audio. El motor se extrae del ZIP al ejecutar; no hay imágenes de fondo de partículas. Solo renderiza cuando su canvas está visible. Si WebGL falla, conserva la A y el fondo oscuro sin partículas.
+
+Seis paneles narrativos con texto existente de V1.2; no ofrecen Express ni Custom en esta microescena. Las opciones comerciales y sus anclas quedan después, sin rediseñar todavía su composición. Se retira selector visible de mercado. En preview local se aproxima la moneda por zona horaria IANA (Europa EUR, resto USD); detección real por país en edge antes de publicación. Sin GPS, sin conversión de divisa ni formularios operativos. No se desarrolla H04. Coming Soon intacto.
+
+QA: build local offline, sintaxis, pruebas aisladas de coreografía y moneda; el entorno de pruebas no puede crear contexto WebGL. La vista completa con partículas reales debe validarse en el Mac. Uso privado. No publicar, redistribuir captura ni declarar derechos comerciales no acreditados.
