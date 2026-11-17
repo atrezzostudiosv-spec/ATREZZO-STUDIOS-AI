@@ -1,0 +1,37 @@
+/* Scene 02 only. Original JS timing and geometry are in private source. */
+#keyfacts-section.atz-work-shell{background:#090812;color:#f5f5fa;position:relative;z-index:20;min-height:100vh;overflow:visible;padding:0;}
+#work{height:0;position:relative;scroll-margin-top:0;}
+#atz-work-fallback[hidden],#atz-work-mount[hidden]{display:none!important}
+.atz-work-sequence{background:#090812;color:#f5f5fa;}
+.atz-work-sequence .text-light-font{color:#f5f5fa!important}
+.atz-work-sequence .title-block{width:100%;max-width:560px;align-items:flex-start;text-align:left;padding:0 2vw;}
+.atz-work-sequence .title-block h2{font-family:Arial,Helvetica,sans-serif;font-weight:500;font-size:clamp(42px,5.8vw,94px);letter-spacing:-.075em;line-height:.96;}
+.atz-work-sequence .title-block:before{content:'02 / SELECTED WORK';font:11px/1.5 ui-monospace,monospace;letter-spacing:.18em;color:#b967ef;}
+.atz-work-sequence .js-work-card-inner{padding-inline:clamp(22px,3.5vw,64px)}
+.atz-work-sequence .js-work-card-inner h3{font-family:Arial,Helvetica,sans-serif;font-size:clamp(28px,3.5vw,58px);font-weight:500;letter-spacing:-.055em;line-height:1.03}
+.atz-work-sequence .js-work-card-inner p{color:#c6c2d7;font-size:clamp(12px,1.1vw,16px);line-height:1.45}
+.atz-work-sequence .atz-project-image{display:block;border-radius:0;aspect-ratio:670/460;background:#100c35;border:1px solid #b967ef33;box-shadow:0 20px 70px #0006;}
+.atz-work-image{width:100%;height:100%;object-fit:contain;display:block;}
+.atz-work-link{display:inline-flex;align-items:center;justify-content:center;gap:12px;border-bottom:1px solid #b967ef;padding:9px 0;font:500 13px/1.3 Arial,Helvetica,sans-serif;color:#f5f5fa;text-decoration:none;white-space:normal;}
+.atz-work-link:hover,.atz-work-link:focus-visible{color:#b967ef}
+.atz-work-sequence .atz-work-bridge{min-height:100dvh;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:32px;padding:clamp(28px,9vw,140px);background:radial-gradient(ellipse at 85% 60%,#153b9d55,transparent 55%),#090812;color:#f5f5fa;}
+.atz-work-bridge h2{font-size:clamp(52px,8.7vw,132px);line-height:1.055;letter-spacing:-.043em;font-weight:500;max-width:12ch;}
+.atz-work-sequence .atz-work-end-title{font-family:Arial,Helvetica,sans-serif;font-size:clamp(33px,4.25vw,68px);font-weight:500;line-height:1.11;letter-spacing:-.034em;max-width:12ch;margin:0 auto;}
+.atz-work-sequence .atz-work-end-title .words,.atz-work-sequence .atz-work-bridge-title .words{white-space:nowrap;}
+@media(max-width:767px){.atz-work-sequence .atz-work-end-title{font-size:clamp(34px,8.4vw,56px);max-width:13ch;}.atz-work-bridge h2{font-size:clamp(47px,10.8vw,78px);line-height:1.06;}}
+.atz-work-fallback{padding:clamp(64px,10vw,150px) var(--gutter);display:grid;gap:36px;}
+.atz-work-fallback h2{font-size:clamp(48px,8vw,130px);line-height:.94;letter-spacing:-.07em;max-width:12ch;font-weight:500;}
+.atz-work-static-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,4vw,65px)}
+.atz-work-static-grid img{width:100%;aspect-ratio:670/460;object-fit:contain;background:#100c35;border:1px solid #b967ef33;}
+.atz-work-static-grid h3{font-size:clamp(30px,4vw,60px);letter-spacing:-.05em;line-height:1.05;margin-top:18px;}
+.atz-work-static-grid p{color:#c6c2d7;margin:10px 0;}
+@media(max-width:767px){.atz-work-static-grid{grid-template-columns:1fr}.atz-work-sequence .title-block{padding:0;gap:24px}.atz-work-sequence .title-block h2{font-size:clamp(48px,12vw,86px)}.atz-work-sequence .js-work-card-inner{padding-inline:0}.atz-work-sequence .atz-work-bridge{min-height:60svh}.atz-work-sequence .js-work-card-inner h3{font-size:35px}}
+@media(max-height:680px) and (min-width:768px){.atz-work-sequence .atz-project-image{max-height:50vh}.atz-work-sequence .js-work-card-inner>div{padding-block:18px}.atz-work-sequence .title-block h2{font-size:clamp(40px,5vw,78px)}}
+
+@media(max-width:767px){.atz-work-sequence{height:auto!important;min-height:0!important}.atz-work-sequence>div:first-child,.atz-work-sequence>div:first-child>div,.atz-work-sequence>div:first-child>div>div,.atz-work-sequence>div:first-child>div>div>div{height:auto!important;min-height:0!important;position:relative!important;inset:auto!important}.atz-work-sequence>div:last-child{height:auto!important;min-height:0!important;position:relative!important;inset:auto!important}.atz-work-sequence .title-block{width:100%;max-width:100%}.atz-work-sequence .atz-work-bridge{min-height:55svh}}
+
+.atz-work-sequence .atz-work-intro,.atz-work-sequence .js-work-card{background:#090812;}
+.atz-work-sequence .js-card-line,.atz-work-sequence .js-card-line-horizontal{background:#b967ef45!important;}
+html[lang=es] .atz-work-sequence .title-block:before{content:'02 / PROYECTOS'}
+.atz-work-reveal-wrap{width:100%;min-width:0;}
+.atz-work-bridge .atz-work-reveal-wrap{max-width:100%;}

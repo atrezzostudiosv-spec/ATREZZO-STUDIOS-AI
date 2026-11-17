@@ -1,0 +1,8 @@
+ATREZZO STUDIOS · DESIGN IN MOTION
+HOME V04 — FIND YOUR DIGITAL SOLUTION · LABORATORIO PRIVADO
+
+Descomprime en Descargas y abre START.command. Conserva el ZIP original trionn-dev-autonomous.zip que ya tienes. No cierres Terminal durante la revisión. No necesitas descargar otro TRIONN.
+
+Hero V01 conservado. Las cinco bandas de la transición son ahora Ink #090812. Se conservan las animaciones originales de Vision y Work. Los dos titulares de salida tienen más aire y el mismo BlurTextReveal original; aparecen según visibilidad. La escena 03 explica Express y Custom mediante dos composiciones propias y un estudio visual en movimiento. El CTA mantiene el destino de contacto de la preview; todavía no envía formularios. Los estudios son ilustraciones propias, no clientes ni capturas de proyectos reales. La parte de 371 fotogramas usa el núcleo original G (precarga, índice, interpolación y display), con 371 SVG propios generados localmente, sin añadir pin ni montar toda la secuencia G de seis tarjetas, partículas, vídeo y audio. No es una instalación de ATZ-SEC-013, reservado para Websites. 
+
+No publicar ni redistribuir la captura privada. Los recursos autorizados de GitHub se recuperan por hash. Sin conexión se usan portadas de estudio. QA aislada de Vision, Work, servicio y fallback; falta revisión en el Home WebGL completo en tu Mac. Coming Soon intacto.
