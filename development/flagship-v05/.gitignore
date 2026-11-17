@@ -1,0 +1,4 @@
+private-preview/
+approved-cache/
+__pycache__/
+*.zip

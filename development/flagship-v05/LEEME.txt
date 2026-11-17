@@ -1,0 +1,8 @@
+ATREZZO STUDIOS · DESIGN IN MOTION
+HOME V05 — H03 SERVICE MOTION · LABORATORIO PRIVADO
+
+Descomprime en Descargas y abre START.command. Conserva trionn-dev-autonomous.zip en Descargas. No necesitas descargar otra captura. Cierra la Terminal de V04 si sigue abierta, conserva V04 como respaldo. No cierres la Terminal de V05 mientras revisas.
+
+H01 y H02 protegidos. H01 solo cambia descriptor autorizado. H03 recupera del módulo 28236 G original: las letras se dispersan, las tarjetas entran en parejas cruzadas, iconos se dibujan y los 371 fotogramas se reproducen en ambos sentidos. Se mantiene el tramo original de 800% desktop/600% móvil, separado del pin ya aprobado de Work. Se conserva el contenido V1.2 para H03, dos ofertas, sin nuevas líneas comerciales; los seis slots originales muestran fragmentos de ambas ofertas, no seis servicios. El selector permite saltar directamente a la oferta. La información completa, precio y enlaces están en el bloque editorial posterior. Moneda USD por defecto en preview local, selector EUR persistente durante la sesión; geolocalización edge pendiente. 24 h corresponde a primera versión elegible, no lanzamiento. Enlaces de preview a anclas, sin formularios operativos. Menú y descriptor sin oferta Social Media; H05 actualizado solo en texto provisional, aún no desarrollado. No se avanza H04 ni se modifica Coming Soon.
+
+Los fotogramas son un estudio vectorial propio del símbolo provisional, no los medios originales de TRIONN. Se omiten vídeo/audio original y transición final hacia testimonials. No es equivalencia visual íntegra con la referencia. La captura y los motores extraídos son de uso privado; derechos comerciales pendientes. No publicar ni redistribuir. QA aislada de motor, no Home WebGL completo en Mac/Safari.
