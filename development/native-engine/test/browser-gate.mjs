@@ -49,11 +49,17 @@ try{
      await page.evaluate(()=>window.scrollTo(0,700));
      await page.waitForFunction(()=>gate.progress>.6&&gate.frames.at(-1)>220);
      const forward=await page.evaluate(()=>gate.frames.at(-1));
-     await page.waitForFunction(()=>{const img=document.querySelector("#monogram");return img.complete&&img.naturalWidth===960&&Number(img.src.match(/frame_(\d+)\.svg$/)?.[1])===gate.frames.at(-1)+1});
+     await page.waitForFunction(()=>{const img=document.querySelector("#monogram"),index=gate.frames.at(-1);return Number.isInteger(index)&&img.complete&&img.naturalWidth>0&&img.naturalHeight>0&&img.currentSrc.endsWith("/frame_"+String(index+1).padStart(4,"0")+".svg")});
+      const decodedForward=await page.evaluate(async()=>{const img=document.querySelector("#monogram");await img.decode();return {width:img.naturalWidth,height:img.naturalHeight,src:img.currentSrc,index:gate.frames.at(-1)}});
+      assert(Math.abs(decodedForward.width/decodedForward.height-16/9)<.01,"Decoded image aspect ratio");
+      console.log(name,width,"decodedForward",JSON.stringify(decodedForward));
      await page.evaluate(()=>window.scrollTo(0,150));
      await page.waitForFunction(()=>gate.progress<.25&&gate.frames.at(-1)<90);
      const reverse=await page.evaluate(()=>gate.frames.at(-1));
-     await page.waitForFunction(()=>{const img=document.querySelector("#monogram");return img.complete&&img.naturalWidth===960&&Number(img.src.match(/frame_(\d+)\.svg$/)?.[1])===gate.frames.at(-1)+1});
+     await page.waitForFunction(()=>{const img=document.querySelector("#monogram"),index=gate.frames.at(-1);return Number.isInteger(index)&&img.complete&&img.naturalWidth>0&&img.naturalHeight>0&&img.currentSrc.endsWith("/frame_"+String(index+1).padStart(4,"0")+".svg")});
+      const decodedReverse=await page.evaluate(async()=>{const img=document.querySelector("#monogram");await img.decode();return {width:img.naturalWidth,height:img.naturalHeight,src:img.currentSrc,index:gate.frames.at(-1)}});
+      assert(Math.abs(decodedReverse.width/decodedReverse.height-16/9)<.01,"Decoded image aspect ratio");
+      console.log(name,width,"decodedReverse",JSON.stringify(decodedReverse));
      assert(reverse<forward);
      const webgl=await page.evaluate(()=>gate.webgl);
      if(name==="chromium")assert(webgl,"Chromium software WebGL must initialize");
@@ -67,10 +73,10 @@ try{
      assert.deepEqual(errors,[]);
      assert.deepEqual(await page.evaluate(()=>gate.errors),[]);
      report.push({name,width,forward,reverse,webgl,realMonogramAssets:true,reducedMotion:true,dispose:true});
-    }finally{await page.close()}
+    }catch(error){console.error(name,width,"browser gate diagnostics",JSON.stringify(await page.evaluate(()=>{const img=document.querySelector("#monogram");return {gate:window.gate,src:img?.src,currentSrc:img?.currentSrc,complete:img?.complete,width:img?.naturalWidth,height:img?.naturalHeight}}).catch(()=>null)));throw error}finally{await page.close()}
    }
    const nojs=await browser.newPage({javaScriptEnabled:false});
-   try{await nojs.goto(url);assert.equal(await nojs.locator("#frame").textContent(),"Static fallback")}finally{await nojs.close()}
+   try{await nojs.goto(url);assert.equal(await nojs.locator("#frame").textContent(),"Static fallback");assert(await nojs.locator("#monogram").evaluate(async img=>{await img.decode();return img.naturalWidth>0&&img.currentSrc.endsWith("/frame_0001.svg")}))}finally{await nojs.close()}
   }finally{await browser.close()}
  }
  console.log(JSON.stringify(report,null,2));
