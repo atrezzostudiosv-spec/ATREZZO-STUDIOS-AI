@@ -1,0 +1,83 @@
+name: Native V06 isolated online preview
+on:
+  pull_request:
+    branches: [flagship-development]
+    paths:
+      - 'development/native-engine/**'
+      - '.github/workflows/native-v06-preview.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: native-v06-preview-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  build-and-validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: atrezzostudiosv-spec/atrezzo-repositorio
+          ref: 9ee01f9e4de7208e0f1ec16882239b9124e68f78
+          path: library-preview-source
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install official libraries and test tooling
+        working-directory: development/native-engine
+        run: npm install --no-audit --no-fund --no-save --package-lock=false esbuild@0.25.12 playwright@1.56.1
+      - name: Build owned content and independent animation bundle
+        working-directory: development/native-engine
+        run: |
+          python3 build-preview.py "$RUNNER_TEMP/v06-native" ../../library-preview-source
+          node build-preview.mjs "$RUNNER_TEMP/v06-native"
+          test -f "$RUNNER_TEMP/v06-native/en/index.html"
+          test -f "$RUNNER_TEMP/v06-native/es/index.html"
+          test ! -e "$RUNNER_TEMP/v06-native/_next"
+      - name: Install supported browser engines
+        working-directory: development/native-engine
+        run: npx playwright install --with-deps chromium webkit
+      - name: Verify real native website candidate
+        working-directory: development/native-engine
+        run: node test/preview-gate.mjs "$RUNNER_TEMP/v06-native"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v06-native-validated
+          path: ${{ runner.temp }}/v06-native
+          if-no-files-found: error
+          retention-days: 7
+  stage-preview-only:
+    needs: build-and-validate
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref == 'atrezzo-native-engine'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/download-artifact@v4
+        with:
+          name: v06-native-validated
+          path: ${{ runner.temp }}/v06-native
+      - name: Stage verified preview only, never deploy or change main
+        run: |
+          set -euo pipefail
+          target="public/preview/v06-native"
+          test ! -e "$target"
+          mkdir -p "$(dirname "$target")"
+          cp -a "$RUNNER_TEMP/v06-native" "$target"
+          git switch -c "native-v06-preview-$GITHUB_RUN_ID"
+          git add -- "$target"
+          git diff --cached --name-only | awk 'index($0,"public/preview/v06-native/")!=1 {exit 1}'
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Stage validated V06 native migration preview (isolated route)"
+          git push origin "HEAD:refs/heads/native-v06-preview-$GITHUB_RUN_ID"
+          echo "STAGED_BRANCH=native-v06-preview-$GITHUB_RUN_ID"
