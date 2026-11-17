@@ -44,7 +44,6 @@ for i in range(1,4):
 for path in ("brand.css","selected-work.css","services.css"):
     put(out/path,(BASE/path).read_bytes())
 put(out/"native-preview.css",(HERE/"preview.css").read_bytes())
-put(out/"brand.json",json.dumps(brand))
 for lang in ("en","es"):
     es=lang=="es"
     t=lambda en,sp:sp if es else en
@@ -67,6 +66,7 @@ for lang in ("en","es"):
     bridge='<div id="atz-service-mount" class="native-bridge"><div class="native-bridge-stage"><canvas id="native-particles" aria-hidden="true" hidden></canvas><div class="native-bridge-art"><img id="native-monogram" src="../assets/service-frames/frame_0001.svg" width="960" height="540" alt=""></div><div class="native-bridge-copy"><span class="eyebrow">'+escape(c["label"])+'</span><h2>'+escape(' / '.join(c["lines"]))+'</h2><p>'+escape(c["opening"])+'</p></div><div class="native-panels">'+cards+'</div><p class="native-bridge-closing">'+escape(c["closing"])+'</p></div></div>'
     text=text.replace('<div id="atz-service-mount" hidden></div>',bridge)
     # All links and media are relative to this isolated Pages subdirectory.
+    text=text.replace('href="/brand.css"','href="../brand.css"').replace('href="/selected-work.css"','href="../selected-work.css"').replace('href="/services.css"','href="../services.css"')
     text=text.replace('"/assets/','"../assets/').replace('"/components/','"../components/').replace('href="/en/"','href="../en/"').replace('href="/es/"','href="../es/"')
     assert "/_next/" not in text and "service-frame-engine.js" not in text and "service-particles.js" not in text
     put(out/lang/"index.html",text)
