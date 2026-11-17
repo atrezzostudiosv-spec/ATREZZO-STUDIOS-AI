@@ -1,0 +1,35 @@
+name: Native engine browser gate
+on:
+  push:
+    branches: [atrezzo-native-engine]
+    paths:
+      - 'development/native-engine/**'
+      - '.github/workflows/native-engine-browser-gate.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  official-runtime:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: development/native-engine
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install exact official dependencies and test tooling
+        run: |
+          npm install --no-audit --no-fund --no-save --package-lock=false esbuild@0.25.12 playwright@1.56.1
+          npm ls gsap lenis three esbuild playwright
+      - name: Foundation unit tests and syntax
+        run: |
+          npm test
+          npm run check
+          node --check test/browser-gate.mjs
+      - name: Install browsers
+        run: npx playwright install --with-deps chromium webkit
+      - name: Official browser integration
+        run: node test/browser-gate.mjs
