@@ -15,6 +15,9 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
       - name: Verify isolated assets and brand
         run: |
           python3 - <<'PY'
@@ -31,9 +34,6 @@ jobs:
           print('432 files, 371 unique frames, zero former-brand references')
           PY
           find public/preview/v06-original -name '*.js' -print0 | xargs -0 -n1 node --check
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
       - run: npm install --no-save playwright@1.56.1
       - run: npx playwright install --with-deps chromium webkit
       - run: node tests/v06-original-gate.mjs public/preview/v06-original /ATREZZO-STUDIOS-AI/public/preview/v06-original
