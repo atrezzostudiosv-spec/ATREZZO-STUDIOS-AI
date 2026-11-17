@@ -1,0 +1,28 @@
+/* H03 only — original kinetic composition, editorial offer text outside the pin. */
+.atz-services{position:relative;z-index:20;background:#090812;color:#f5f5fa;padding:clamp(64px,8vw,130px) 0 0;isolation:isolate;scroll-margin-top:0}
+.atz-services-head{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,.75fr);gap:clamp(30px,6vw,100px);align-items:end;padding:0 var(--gutter) clamp(50px,7vw,100px)}
+.atz-services .eyebrow{color:#cbb9fa;display:block;letter-spacing:.15em;margin-bottom:20px}
+#atz-services-heading{font-size:clamp(54px,8.5vw,132px);line-height:1.04;letter-spacing:-.047em;font-weight:500;max-width:12ch}
+.atz-services-intro{display:grid;gap:20px;max-width:530px}.atz-services-intro p{font-size:clamp(17px,1.55vw,22px);line-height:1.5;color:#d4cce5}.atz-services-intro nav{display:flex;flex-wrap:wrap;gap:22px}.atz-services-intro a{color:#f5f5fa;border-bottom:1px solid #b967ef;padding-bottom:8px;font-size:14px}.atz-market{font:12px/1.5 Arial,sans-serif;color:#cbb9fa;display:flex;gap:10px;align-items:center}.atz-market select{background:#100c35;color:#f5f5fa;border:1px solid #b967ef66;border-radius:4px;padding:5px 9px}
+#atz-service-mount[hidden]{display:none!important}.atz-service-kinetic{height:100dvh;position:relative;overflow:hidden;background:#090812}.atz-service-kinetic #atrezzo-services{background:#090812}.atz-service-kinetic .svc-card .card-inner{background:#100c35b8;border:1px solid #b967ef40}.atz-service-kinetic .svc-card h3{font-size:clamp(20px,2.5vw,42px);line-height:1.05;font-weight:500;letter-spacing:-.04em}.atz-service-kinetic .svc-card p{font-size:clamp(12px,1.12vw,17px);line-height:1.4;color:#f5f5fa}.atz-service-kinetic .mrquee-text{color:#f5f5fa!important;font-family:Arial,Helvetica,sans-serif}.atz-service-kinetic .title{font-family:Arial,Helvetica,sans-serif}.atz-service-kinetic a{pointer-events:auto}
+.atz-offer-grid{display:grid;grid-template-columns:1fr 1fr;padding:clamp(54px,8vw,120px) var(--gutter);gap:clamp(40px,8vw,140px);border-top:1px solid #b967ef40;border-bottom:1px solid #b967ef40}.atz-service-copy{display:flex;flex-direction:column;gap:20px;min-width:0;scroll-margin-top:36px}.atz-service-copy .eyebrow{margin:0;color:#b967ef}.atz-service-copy h3{font-size:clamp(40px,5.7vw,88px);line-height:1.03;letter-spacing:-.045em;font-weight:500;max-width:11ch}.atz-service-copy p{font-size:clamp(15px,1.25vw,18px);line-height:1.6;max-width:48ch;color:#c2bbd3}.atz-service-copy p.atz-service-lead{font-size:clamp(18px,1.6vw,24px);line-height:1.4;color:#f5f5fa}.atz-service-copy p.atz-service-price{font-size:clamp(28px,3.5vw,56px);line-height:1.1;color:#b967ef;letter-spacing:-.04em}.atz-service-copy .atz-mi{margin-top:12px;--mi-fg:#f5f5fa;--mi-accent:#b967ef}.atz-service-copy .mi-cta{color:#f5f5fa;min-height:50px}.atz-study-caption{font:10px/1.5 ui-monospace,monospace;color:#cbb9fa;letter-spacing:.13em}.atz-services-exit{padding:36px var(--gutter) 60px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px}.atz-services-exit .eyebrow{margin:0}.atz-services a:focus-visible{outline:2px solid #b967ef;outline-offset:5px}
+@media(max-width:767px){.atz-services-head,.atz-offer-grid{grid-template-columns:1fr;gap:36px}.atz-services-head{padding-bottom:44px}#atz-services-heading{font-size:clamp(48px,11vw,80px)}.atz-service-kinetic .svc-card .card-inner{padding:20px;min-height:fit-content}.atz-service-kinetic .svc-card h3{font-size:24px}.atz-service-kinetic .svc-card p{font-size:14px}.atz-service-kinetic .svc-card svg{width:40px;height:40px}.atz-service-copy h3{font-size:clamp(40px,9vw,65px)}.atz-service-copy{gap:15px}.atz-offer-grid article+article{padding-top:36px;border-top:1px solid #b967ef40}}
+
+.atz-service-kinetic .mrquee-text{line-height:1;letter-spacing:-.048em}.atz-offer-study{margin:24px 0 0;min-width:0}.atz-offer-study img{width:100%;height:auto;display:block}.atz-offer-study figcaption{margin-top:12px}
+
+/* H03 bridge: real original Three point clouds behind transparent symbol frames.
+   Preserve G's transform positions, opacity ramps and pin; adjust brand only. */
+.atz-services{padding-top:0}
+.atz-offers{padding-top:clamp(64px,8vw,130px)}
+.atz-service-kinetic #atrezzo-services>div{background:radial-gradient(ellipse at 50% 53%,#171032 0%,#100c25 36%,#090812 78%)}
+.atz-service-kinetic .atz-galaxy{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block;pointer-events:none}
+.atz-service-kinetic #c{z-index:1;pointer-events:none}
+.atz-service-kinetic .svc-card .card-inner{background:rgba(13,11,26,.82);border:1px solid rgba(185,103,239,.23);box-shadow:0 16px 65px rgba(0,0,0,.3)}
+.atz-service-kinetic .svc-card h3{color:#f5f5fa;line-height:1.13;letter-spacing:-.03em;font-size:clamp(19px,2vw,34px)}
+.atz-service-kinetic .svc-card p{color:#dedbea;line-height:1.55}
+.atz-service-kinetic [data-services-copy],.atz-service-kinetic [data-services-copy] *{mix-blend-mode:normal!important;color:#f5f5fa!important}
+.atz-service-kinetic [data-services-copy] .title{font-size:clamp(13px,1.15vw,19px);line-height:1.5;letter-spacing:.005em}
+.atz-service-kinetic .mrquee-text{font-size:clamp(64px,11vw,185px);letter-spacing:-.055em}
+@media(max-width:767px){.atz-service-kinetic .svc-card h3{font-size:21px}.atz-service-kinetic .svc-card p{font-size:13px}.atz-service-kinetic .mrquee-text{font-size:clamp(48px,12vw,90px)}.atz-service-kinetic [data-services-copy] .title{font-size:13px}}
+
+.atz-service-kinetic .atz-galaxy[hidden]{display:none!important}
