@@ -1,0 +1,61 @@
+name: HOME V08 — H04 Editorial Journey
+on:
+  push:
+    branches: [preview-v08-h04, main]
+    paths:
+      - 'public/preview/v08/**'
+      - 'tests/v08-h04-gate.mjs'
+      - '.github/workflows/v08-h04.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, webkit]
+        lang: [en, es]
+    env:
+      ATREZZO_BROWSER: ${{ matrix.browser }}
+      ATREZZO_LANG: ${{ matrix.lang }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Protect closed scenes and verify isolated H04
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import subprocess,re
+          base='bf9a911eadb0a19016b7888ed5d4e81022c66117'
+          assert not subprocess.check_output(['git','diff','--name-only',base,'HEAD','--','public/preview/v07','public/preview/v06-original','public/index.html','public/preview/v06-native']).strip()
+          v7=Path('public/preview/v07'); v8=Path('public/preview/v08')
+          for lang in ('en','es'):
+              old=(v7/lang/'index.html').read_text(); new=(v8/lang/'index.html').read_text()
+              def outside(s):
+                  s=re.sub(r'<section id="method"[\s\S]*?(?=<section id="creative")','',s,count=1)
+                  s=s.replace('/public/preview/v08/en/','/public/preview/v07/en/').replace('/public/preview/v08/es/','/public/preview/v07/es/')
+                  s=s.replace('Home V08 — The Transformation','Home V07 — Continuous Digital Space')
+                  return s.replace('<link rel="stylesheet" href="/ATREZZO-STUDIOS-AI/public/preview/v08/h04.css">','')
+              assert outside(old)==outside(new),lang
+              assert new.count('data-am-journey-frame')==3 and new.count('data-am-journey-step')==3
+              assert b'tri'+b'onn' not in new.lower().encode()
+          for name,sha in [('ATZ-MOT-006.js','e97104b360f325cbfdab486baee44ad6c103014a'),('runtime.js','d4fc5105b346c52cf947f53be8a822c98abefaa4'),('atrezzo-motion-v1.css','7fb9ccf2eade5aa061425ca3c10169b3136d5a90')]:
+              assert subprocess.check_output(['git','hash-object',str(v7/'components/motion'/name)]).decode().strip()==sha
+          print('V07 immutable; identical content outside H04 except preview navigation and stylesheet; original MOT-006 exact')
+          PY
+      - run: npm install --no-save --no-audit --no-fund --package-lock=false playwright@1.56.1
+      - run: npx playwright install --with-deps $ATREZZO_BROWSER
+      - run: node tests/v08-h04-gate.mjs public/preview/v08 /ATREZZO-STUDIOS-AI/public/preview/v08
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v08-h04-screenshots-${{ matrix.browser }}-${{ matrix.lang }}
+          path: qa-v08/
+          if-no-files-found: ignore
