@@ -51,7 +51,7 @@ await page.waitForTimeout(2300);
 const express=await sample();await page.waitForTimeout(650);const express2=await sample();
 assert(express.source==="true"&&express.rendered==="true"&&express.energy>0,"No live original particle projection: "+JSON.stringify(express));
 assert(express2.frame>express.frame&&express2.layers[0]!==express.layers[0],"No active original frames or foreground motion");
-assert(express.sourceCount===1&&express.mirrorIs2D&&express.layers.length===6,"Unexpected renderer or layer count");
+assert(express.sourceCount===1&&express.mirrorIs2D&&express.layers.length===6,"Unexpected renderer or layer count");await page.waitForFunction(()=>[...document.querySelectorAll("#express img[data-depth]")].every(x=>x.complete&&x.naturalWidth>0));
 assert(express.blend<.3&&!express.overflow,"Express color/layout incorrect: "+JSON.stringify(express));
 assert(await page.locator("#express [data-atz-id='ATZ-MOT-008'] .ty-unit").count()>0,"Exact typography missing");
 assert(await page.locator("#express .mi-cta").isVisible());
@@ -60,7 +60,7 @@ await gotoScene("custom");await page.waitForTimeout(2400);const custom=await sam
 assert(custom.blend>.85&&custom.frame>express2.frame&&custom.energy>0&&!custom.overflow,"Custom handoff failed: "+JSON.stringify(custom));
 assert(custom.layers[4]!==express.layers[4],"Custom planes did not update");
 assert(await page.locator("#custom [data-atz-id='ATZ-MOT-008'] .ty-unit").count()>0);
-assert(await page.locator("#custom .mi-cta").isVisible());
+assert(await page.locator("#custom .mi-cta").isVisible());await page.waitForFunction(()=>[...document.querySelectorAll("#custom img[data-depth]")].every(x=>x.complete&&x.naturalWidth>0));
 await page.screenshot({path:`qa-v07/${name}-${lang}-${width}-custom.png`});
 await gotoScene("express");await page.waitForTimeout(900);const reverse=await sample();
 assert(reverse.blend<.3&&reverse.frame>custom.frame&&reverse.energy>0,"Reverse handoff failed: "+JSON.stringify(reverse));

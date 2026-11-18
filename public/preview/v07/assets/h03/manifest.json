@@ -1,0 +1,43 @@
+{
+  "purpose": "Authorized illustrative studio design studies extracted from owner-approved H03 mockups; no client work claims. Original visible pixels masked and encoded to WebP. Independent shallow motion preserves occlusion.",
+  "source": "18 Nov 2026 approved H03 Express and Custom visual references",
+  "assets": [
+    {
+      "file": "express-laptop.webp",
+      "git_blob_sha": "d61e6b121e23fe0056ac9d73a19e6f414581891a",
+      "width": 997,
+      "height": 617
+    },
+    {
+      "file": "express-phone.webp",
+      "git_blob_sha": "a072589f4699822f87108ebf9064618a4af5170f",
+      "width": 271,
+      "height": 443
+    },
+    {
+      "file": "custom-back.webp",
+      "git_blob_sha": "da74906741ee9856387477f68de74ba3ab423183",
+      "width": 396,
+      "height": 260
+    },
+    {
+      "file": "custom-side.webp",
+      "git_blob_sha": "defed7dfa3e3f3edd0921468ed13776109d6cce1",
+      "width": 242,
+      "height": 414
+    },
+    {
+      "file": "custom-main.webp",
+      "git_blob_sha": "9844186d0399d6747978fa49926768b135fa6635",
+      "width": 802,
+      "height": 622
+    },
+    {
+      "file": "custom-low.webp",
+      "git_blob_sha": "192e59e17360e5d9dd1e7365377865db48726cac",
+      "width": 384,
+      "height": 243
+    }
+  ],
+  "license": "ATREZZO generated design studies"
+}

@@ -39,6 +39,11 @@ jobs:
                   assert forbidden not in p.read_bytes().lower(), str(p)
                   assert b'/public/preview/v06-original/' not in p.read_bytes(), str(p)
           assert (v7/'service-frame-engine.js').read_bytes()==(v6/'service-frame-engine.js').read_bytes().replace(b'/public/preview/v06-original/',b'/public/preview/v07/')
+          artwork={'express-laptop.webp':'d61e6b121e23fe0056ac9d73a19e6f414581891a','express-phone.webp':'a072589f4699822f87108ebf9064618a4af5170f','custom-back.webp':'da74906741ee9856387477f68de74ba3ab423183','custom-side.webp':'defed7dfa3e3f3edd0921468ed13776109d6cce1','custom-main.webp':'9844186d0399d6747978fa49926768b135fa6635','custom-low.webp':'192e59e17360e5d9dd1e7365377865db48726cac'}
+          for name,sha in artwork.items():
+              raw=(v7/'assets/h03'/name).read_bytes()
+              assert hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\x00'+raw).hexdigest()==sha,name
+          print('Six transparent approved-reference layers verified')
           print('V06 intact, 371 exact frames, exact frame engine except isolated asset prefix, zero former-brand references')
           PY
           find public/preview/v07 -name '*.js' -print0 | xargs -0 -n1 node --check
