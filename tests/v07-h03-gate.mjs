@@ -9,10 +9,10 @@ const server=createServer(async(req,res)=>{try{const path=new URL(req.url,"http:
 await new Promise(r=>server.listen(0,"127.0.0.1",r));const base=process.env.ATREZZO_ONLINE_BASE||"http://127.0.0.1:"+server.address().port+prefix;
 const results=[];await mkdir("qa-v07",{recursive:true});
 try{
-for(const [name,engine] of [["chromium",chromium],["webkit",webkit]]){
+for(const [name,engine] of [["chromium",chromium],["webkit",webkit]].filter(([name])=>!process.env.ATREZZO_BROWSER||name===process.env.ATREZZO_BROWSER)){
  const browser=await engine.launch(name==="chromium"?{args:["--use-angle=swiftshader","--enable-unsafe-swiftshader","--disable-dev-shm-usage"]}:{});
  try{
- for(const lang of ["en","es"])for(const width of [375,768,1024,1440]){
+ for(const lang of ["en","es"].filter(lang=>!process.env.ATREZZO_LANG||lang===process.env.ATREZZO_LANG))for(const width of [375,768,1024,1440]){
  const page=await browser.newPage({viewport:{width,height:900},reducedMotion:"no-preference"});
  const errors=[],failed=[],external=[],consoleErrors=[];
  page.on("pageerror",e=>errors.push(String(e)));
@@ -44,7 +44,7 @@ for(const [name,engine] of [["chromium",chromium],["webkit",webkit]]){
 // H03 handoff: actual WebGL source is still the single original bridge canvas.
 // The second canvas must be a live 2D projection, not another WebGL instance.
 const gotoScene=async(id)=>{await page.evaluate(id=>{const el=document.getElementById(id);window.scrollTo(0,el.getBoundingClientRect().top+scrollY+8)},id);await page.waitForFunction(id=>{const r=document.getElementById(id).getBoundingClientRect();return Math.abs(r.top)<90},id,{timeout:15000});};
-const sample=async()=>page.evaluate(()=>{const c=document.getElementById("atz-v07-field"),src=document.querySelector("#atz-service-mount .atz-galaxy"),temp=document.createElement("canvas");temp.width=temp.height=32;const x=temp.getContext("2d");x.drawImage(c,0,0,32,32);const pixels=x.getImageData(0,0,32,32).data;let energy=0;for(let i=0;i<pixels.length;i+=4)energy+=pixels[i]+pixels[i+1]+pixels[i+2]+pixels[i+3];return {frame:Number(c.dataset.frame||0),rendered:c.dataset.rendered,source:src?.dataset.rendered,energy,blend:Number(getComputedStyle(document.getElementById("atz-offers")).getPropertyValue("--atz-blend")),layers:[...document.querySelectorAll("#express [data-depth],#custom [data-depth]")].map(el=>getComputedStyle(el).transform),overflow:document.documentElement.scrollWidth>innerWidth+2,viewport:document.querySelector(".atz-v07-viewport").getBoundingClientRect().top,sourceCount:document.querySelectorAll("#atz-service-mount .atz-galaxy").length,mirrorIs2D:!!c.getContext("2d")};});
+const sample=async()=>page.evaluate(()=>{const c=document.getElementById("atz-v07-field"),src=document.querySelector("#atz-service-mount .atz-galaxy"),temp=document.createElement("canvas");temp.width=temp.height=32;const x=temp.getContext("2d");x.drawImage(c,0,0,32,32);const pixels=c.getContext("2d").getImageData(0,0,c.width,c.height).data;let energy=0;for(let i=0;i<pixels.length;i+=4)energy+=pixels[i]+pixels[i+1]+pixels[i+2]+pixels[i+3];return {frame:Number(c.dataset.frame||0),rendered:c.dataset.rendered,source:src?.dataset.rendered,energy,blend:Number(getComputedStyle(document.getElementById("atz-offers")).getPropertyValue("--atz-blend")),layers:[...document.querySelectorAll("#express [data-depth],#custom [data-depth]")].map(el=>getComputedStyle(el).transform),overflow:document.documentElement.scrollWidth>innerWidth+2,viewport:document.querySelector(".atz-v07-viewport").getBoundingClientRect().top,sourceCount:document.querySelectorAll("#atz-service-mount .atz-galaxy").length,mirrorIs2D:!!c.getContext("2d")};});
 await gotoScene("express");
 await page.waitForFunction(()=>document.getElementById("atz-v07-field")?.dataset.rendered==="true",{},{timeout:20000});
 await page.waitForTimeout(2300);
