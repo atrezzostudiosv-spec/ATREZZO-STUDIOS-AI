@@ -1,0 +1,53 @@
+name: HOME V07 — H03 continuous space pilot
+on:
+  push:
+    branches: [preview-v07-h03, main]
+    paths:
+      - 'public/preview/v07/**'
+      - 'tests/v07-h03-gate.mjs'
+      - '.github/workflows/v07-h03.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Protect V06 and verify exact component assets
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          v6=Path('public/preview/v06-original')
+          v7=Path('public/preview/v07')
+          base='34e0febd54c314648cd9788bbfb21792e9592cad'
+          import subprocess
+          assert not subprocess.check_output(['git','diff','--name-only',base,'HEAD','--','public/preview/v06-original','public/index.html','public/preview/v06-native']).strip()
+          assert len(list((v7/'assets/service-frames').glob('*.svg')))==371
+          for p in (v6/'assets/service-frames').glob('*.svg'):
+              assert p.read_bytes()==(v7/'assets/service-frames'/p.name).read_bytes()
+          forbidden=b'tri'+b'onn'
+          for p in v7.rglob('*'):
+              if p.is_file():
+                  assert forbidden not in p.read_bytes().lower(), str(p)
+                  assert b'/public/preview/v06-original/' not in p.read_bytes(), str(p)
+          assert (v7/'service-frame-engine.js').read_bytes()==(v6/'service-frame-engine.js').read_bytes().replace(b'/public/preview/v06-original/',b'/public/preview/v07/')
+          print('V06 intact, 371 exact frames, exact frame engine except isolated asset prefix, zero former-brand references')
+          PY
+          find public/preview/v07 -name '*.js' -print0 | xargs -0 -n1 node --check
+      - run: npm install --no-save --no-audit --no-fund --package-lock=false playwright@1.56.1
+      - run: npx playwright install --with-deps chromium webkit
+      - run: node tests/v07-h03-gate.mjs public/preview/v07 /ATREZZO-STUDIOS-AI/public/preview/v07
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v07-h03-screenshots
+          path: qa-v07/
+          if-no-files-found: ignore
